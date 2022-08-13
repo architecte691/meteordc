@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2>Prevusion meteo de la ville de {{ ville.name }}:</h2>
+{% for moment in moments %}
+    <h3 style="background:yellow">{{moment.datetime}}</h3>
+    <h4>{{moment.temperature}}*C</h4>
+    <h4>{{moment.cloud_description}}</h4>
+{% endfor %}
+
+{% endblock %}
