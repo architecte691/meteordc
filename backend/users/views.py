@@ -1,14 +1,19 @@
 from django.shortcuts import render
 
 # Create your views here.
+
+
 def connect(request):
-    return render('users/connect.html')
+    return render(request, 'users/connect.html')
+
 
 def disconnect(request):
-    return render('users/disconnect.html')
+    return render(request, 'users/disconnect.html')
+
 
 def profile(request):
-    return render('users/profile.html')
+    return render(request, 'users/profile.html')
+
 
 def subscription(request):
-    return render('users/subscription.html')
+    return render(request, 'users/subscription.html')

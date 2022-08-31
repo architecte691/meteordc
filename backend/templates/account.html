@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block style %}
+<link rel="stylesheet" href="/static/css/account.css">
+<!--  -->
+{% endblock %}
+<!--  -->
+{% block main %}
+<div class="">
+    <div class="bdr pd20 main-header white-text">
+        <div class="container row full-h flex items-center">
+            <div class="col s12 m4 l3 full-h">
+                <div class="avatar z-depth-3">
+                    <img class="full-w" src="/static/images/téléchargement.jpg" alt="">
+                </div>
+            </div>
+            <div class="col s12 m8 l9">
+                <h3 class="font24 black-text">Meldi Akelax</h3>
+                <p class="black-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, quia!</p>
+            </div>
+        </div>
+    </div>
+    <div class="menu z-depth-1">
+        <div class="row m0">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3 active"><a class="active" href="{% url 'profile' %}">Profil</a></li>
+                    <li class="tab col s3 ">
+                        <a href="{% url 'subscription' %}">Abonnement</a>
+                    </li>
+                    <li class="tab col s3 "><a href="{% url 'api' %}">API</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="main_container ">
+        <div class="container ">
+            {% block account_main %}
+            <!--  -->
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<!--  -->
+{% endblock %}

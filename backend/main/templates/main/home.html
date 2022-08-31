@@ -1,36 +1,62 @@
 {% extends 'base.html' %}
-
-{% block main %}
-<h1>Home</h1>
-
-{% for city in cities %}
-<a href="{% url 'city_detail' city.id %}">
-  <h2>{{ city.name }}</h2>
-</a>
-{% endfor %}
-
-<div class="container">
-    <div class="carousel carousel-slider center">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-      <h2>First Panel</h2>
-      <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div>
-  </div>
-</div>
-
+<!--  -->
+{% block style %}
+<link rel="stylesheet" href="/static/css/home.css">
+<!--  -->
 {% endblock %}
+<!--  -->
+{% block main %}
+<div class="pd20">
+    <div class="row">
+        <div class="col s12 m6 l8">
+            <div class="flex">
+                <div class=" grey lighten-3 bdr pd10 mr10">Photo</div>
+                <div class=" grey lighten-3 bdr pdl20 flex-1">
+                    <form action="" method="post">
+                        <input type="text">
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div>
+                <div>
+                    <div class="grey lighten-3 bdr pd20">
+                        <h2 class="m0 font24">villes</h2>
+                        <div class="flex space-between items-center">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt placeat minima quo.</p>
+                            <div>
+                                <a href="{% url 'cities' %}" class="btn transparent green-text z-depth-0">Tout voir</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for city in cities %}
+                            <div class="col s6 m4">
+                                <div class="card z-depth-0">
+                                    <div class="card-image">
+                                        <img src="/static/images/img.jpg">
+                                        <span class="card-title">{{ city.name }}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>Iuire little markup to use effectively.</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a class="btn transparent green-text" href="{% url 'city_detail' city.id %}">Visiter</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    Statistiques
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6 l4 bdr grey lighten-3">
+            <div class="pd20">
+                <h2 class="m0 font24">Annonces</h2>
+            </div>
+        </div>
+    </div>
+</div> {% endblock %}

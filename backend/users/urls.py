@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import connect 
+from .views import connect, profile, disconnect, subscription
 urlpatterns = [
-    path('connexion', connect, name='connect'),
-    path('disconnect', connect, name='disconnect'),
-    path('profile', connect, name='profile'),
-    path('subscription', connect, name='subscription'),
+    path('/connexion', connect, name='connect'),
+    path('/disconnect', disconnect, name='disconnect'),
+    path('/profile', profile, name='profile'),
+    path('/subscription', subscription, name='subscription'),
+    path('/api', subscription, name='api'),
 ]

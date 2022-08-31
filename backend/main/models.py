@@ -2,10 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+
 class City(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
-    # img = models.ImageField(upload_to='media')
+    img = models.ImageField(upload_to='media/cities', null=True)
     lat = models.FloatField(default=0.0)
     log = models.FloatField(default=0.0)
     surface = models.FloatField(default=0.0)
@@ -13,6 +15,7 @@ class City(models.Model):
 
     def __str__(self):
         return f"City {self.name}"
+
 
 class Moment(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -24,4 +27,3 @@ class Moment(models.Model):
 
     def __str__(self):
         return f"Moment: {self.cloud_description} {self.city}"
-    

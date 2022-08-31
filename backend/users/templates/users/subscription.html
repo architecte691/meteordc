@@ -1,0 +1,32 @@
+{% extends 'account.html' %}
+<!--  -->
+{% block account_main %}
+<div>
+    <h3 class="font24">Mes abonnements</h3>
+    <div>
+        <div class="row">
+            <div class="col s12 m8 l6">
+                <form action="">
+                    <div class="mt10">
+                        <label for="username">Nom</label>
+                        <input value="{{user.username}}" class="grey lighten-4 bdr12 pdl20" placeholder="Nom" id="username" name="username" type="text">
+                    </div>
+                    <div class="mt10">
+                        <label for="username">Nom</label>
+                        <input value="{{user.username}}" class="grey lighten-4 bdr12 pdl20" placeholder="Nom" id="username" name="username" type="text">
+                    </div>
+                    <div class="mt10">
+                        <label for="username">Nom</label>
+                        <input value="{{user.username}}" class="grey lighten-4 bdr12 pdl20" placeholder="Nom" id="username" name="username" type="text">
+                    </div>
+                    <div class="mt10">
+                        <button class="btn z-depth-0" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!--  -->
+{% endblock %}
