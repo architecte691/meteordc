@@ -14,16 +14,17 @@ class City(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"City {self.name}"
+        return self.name
 
 
 class Moment(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
     datetime = models.DateTimeField()
+    date_actu = models.DateField(null=True, blank=True)
     temperature = models.FloatField(default=0.0)
     cloud_description = models.TextField(default='')
     create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Moment: {self.cloud_description} {self.city}"
+        return f"{self.temperature} {self.city}"

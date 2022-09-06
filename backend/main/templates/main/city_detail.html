@@ -16,8 +16,12 @@
             </div>
             <div class="col s12 m8">
                 <h3 class="font24">{{ ville.name }}</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, quia!</p>
-                <h3 class="bold">27,2°C</h3>
+                {% for moment in moments %}
+                    {% if moment.date_actu|date:'d m Y' == actu|date:'d m Y' %}
+                        <p>{{moment.cloud_description}}</p>
+                        <h3 class="bold">{{moment.temperature}}°C</h3>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -27,19 +31,19 @@
                 <h3 class="font24">Moments passés</h3>
                 <div class="collection">
                     {% for moment in moments %}
-
-                    <div class="collection-item">
-                        <div class="row">
-                            <div class="col s4">
-                                <h4 class="bold grey-text">{{moment.temperature}}°C</h4>
+                        {% if moment.date_actu|date:'d m Y' < actu|date:'d m Y' %}
+                            <div class="collection-item">
+                                <div class="row">
+                                    <div class="col s4">
+                                        <h4 class="bold grey-text">{{moment.temperature}}°C</h4>
+                                    </div>
+                                    <div class="col s8">
+                                        <p>{{moment.datetime}}</p>
+                                        <p>{{moment.cloud_description}}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col s8">
-                                <p>{{moment.datetime}}</p>
-                                <p>{{moment.cloud_description}}</p>
-                            </div>
-                        </div>
-
-                    </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -47,17 +51,19 @@
                 <h3 class="font24">Moments futures</h3>
                 <div class="collection">
                     {% for moment in moments %}
-                    <div class="collection-item">
-                        <div class="row">
-                            <div class="col s4">
-                                <h4 class="bold green-text">{{moment.temperature}}°C</h4>
+                        {% if moment.date_actu|date:'d m Y' > actu|date:'d m Y' %}
+                            <div class="collection-item">
+                                <div class="row">
+                                    <div class="col s4">
+                                        <h4 class="bold green-text">{{moment.temperature}}°C</h4>
+                                    </div>
+                                    <div class="col s8">
+                                        <p>{{moment.datetime}}</p>
+                                        <p>{{moment.cloud_description}}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col s8">
-                                <p>{{moment.datetime}}</p>
-                                <p>{{moment.cloud_description}}</p>
-                            </div>
-                        </div>
-                    </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

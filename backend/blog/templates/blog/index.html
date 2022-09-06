@@ -15,60 +15,26 @@
             <br>
             <div>
                 <div class="row">
-                    <div class="col s12">
-                        <div class="row grey lighten-3 bdr pd20 flex items-center ">
-                            <div class="col s12 m4 " style="height: 240px;">
-                                <img class="img-full-size bdr" src="/static/images/img.jpg">
-                            </div>
-                            <div class="col s12 m8 full-h" style="height: 100%;">
-                                <div class=" flex flex-column space-between full-h ">
-                                    <div class="">
-                                        <h3 class="font24">Title de l'annonce</h3>
-                                        <p>Iuire little markup to use effectively.</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <a class="btn green-text white" href="">Lire</a>
+                    {% for news in annonces %}
+                        <div class="col s12">
+                            <div class="row grey lighten-3 bdr pd20 flex items-center ">
+                                <div class="col s12 m4 " style="height: 240px;">
+                                    <img class="img-full-size bdr" src="{{news.img.url}}">
+                                </div>
+                                <div class="col s12 m8 full-h" style="height: 100%;">
+                                    <div class=" flex flex-column space-between full-h ">
+                                        <div class="">
+                                            <h3 class="font24">{{news.title}}</h3>
+                                            <p>{{news.description}}</p>
+                                        </div>
+                                        <div class="card-action">
+                                            <a class="btn green-text white" href="">Lire</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s12">
-                        <div class="row grey lighten-3 bdr pd20 flex items-center ">
-                            <div class="col s12 m4 " style="height: 240px;">
-                                <img class="img-full-size bdr" src="/static/images/img.jpg">
-                            </div>
-                            <div class="col s12 m8 full-h" style="height: 100%;">
-                                <div class=" flex flex-column space-between full-h ">
-                                    <div class="">
-                                        <h3 class="font24">Title de l'annonce</h3>
-                                        <p>Iuire little markup to use effectively.</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <a class="btn green-text white" href="">Lire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12">
-                        <div class="row grey lighten-3 bdr pd20 flex items-center ">
-                            <div class="col s12 m4 " style="height: 240px;">
-                                <img class="img-full-size bdr" src="/static/images/img.jpg">
-                            </div>
-                            <div class="col s12 m8 full-h" style="height: 100%;">
-                                <div class=" flex flex-column space-between full-h ">
-                                    <div class="">
-                                        <h3 class="font24">Title de l'annonce</h3>
-                                        <p>Iuire little markup to use effectively.</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <a class="btn green-text white" href="">Lire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -29,18 +29,22 @@
                             </div>
                         </div>
                         <div class="row">
-                            {% for city in cities %}
+                            {% for moment in moments %}
                             <div class="col s6 m4">
                                 <div class="card z-depth-0">
                                     <div class="card-image">
-                                        <img src="/static/images/img.jpg">
-                                        <span class="card-title">{{ city.name }}</span>
+                                        <a href="{% url 'city_detail' moment.city %}">
+                                            <img src="{{moment.city.img.url}}">
+                                            <span class="card-title" style="color:black;">{{ moment.city }}</span>
+                                        </a>
                                     </div>
                                     <div class="card-content">
-                                        <p>Iuire little markup to use effectively.</p>
+                                        <p>{{actu}}</p>
+                                        <h6>{{moment.temperature}}°C</h6>
+                                        <p>{{moment.cloud_description}}</p>
                                     </div>
                                     <div class="card-action">
-                                        <a class="btn transparent green-text" href="{% url 'city_detail' city.id %}">Visiter</a>
+                                        <a class="btn transparent green-text" href="{% url 'city_detail' moment.city %}">Voir</a>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +60,11 @@
         <div class="col s12 m6 l4 bdr grey lighten-3">
             <div class="pd20">
                 <h2 class="m0 font24">Annonces</h2>
+                {% for annonce in annonces %}
+                    <h3>{{annonce.title}}</h3>
+                    <img src="{{annonce.img.url}}">
+                    <p>{{annonce.description}}</p>
+                {% endfor %}
             </div>
         </div>
     </div>

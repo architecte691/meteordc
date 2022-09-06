@@ -16,20 +16,22 @@
             <br>
             <div>
                 <div class="row">
-                    {% for city in cities %}
+                    {% for moment in moments %}
                     <div class="col s12">
                         <div class="row grey lighten-3 bdr pd20 flex items-center ">
                             <div class="col s12 m6 " style="height: 200px;">
-                                <img class="img-full-size bdr" src="/static/images/img.jpg">
+                                <a href="{% url 'city_detail' moment.city %}">
+                                    <img class="img-full-size bdr" src="{{moment.city.img.url}}">
+                                </a>
                             </div>
                             <div class="col s12 m6 full-h" style="height: 100%;">
                                 <div class=" flex flex-column space-between full-h ">
                                     <div class="">
-                                        <h3 class="font24">{{city.name}}</h3>
-                                        <p>Iuire little markup to use effectively.</p>
+                                        <h3 class="font24">{{moment.city}}</h3>
+                                        <p>{{moment.temperature}}°C {{moment.cloud_description}}</p>
                                     </div>
                                     <div class="card-action">
-                                        <a class="btn green-text white" href="{% url 'city_detail' city.id %}">Voir</a>
+                                        <a class="btn green-text white" href="{% url 'city_detail' moment.city %}">Voir</a>
                                     </div>
                                 </div>
                             </div>

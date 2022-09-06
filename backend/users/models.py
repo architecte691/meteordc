@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.
 class Subscription(models.Model):
@@ -12,3 +12,6 @@ class Subscription(models.Model):
 
     def __str__(self):
         return f"subscription {self.name}"
+
+#class Users(AbstractUser):
+#    pass
