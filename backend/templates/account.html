@@ -14,9 +14,12 @@
                     <img class="full-w" src="/static/images/téléchargement.jpg" alt="">
                 </div>
             </div>
-            <div class="col s12 m8 l9">
-                <h3 class="font24 black-text">Meldi Akelax</h3>
+            <div class="col s12 m7 l7">
+                <h3 class="font24 black-text">{{ user.first_name}} {{user.username}}</h3>
                 <p class="black-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, quia!</p>
+            </div>
+            <div class="col">
+                <a class="btn blue" href="{% url 'disconnect' %}">Se deconnecter</a>
             </div>
         </div>
     </div>

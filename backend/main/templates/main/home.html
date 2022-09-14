@@ -13,7 +13,7 @@
                 <div class=" grey lighten-3 bdr pd10 mr10">Photo</div>
                 <div class=" grey lighten-3 bdr pdl20 flex-1">
                     <form action="" method="post">
-                        <input type="text">
+                        <input type="text" placeholder="Recherche...">
                     </form>
                 </div>
             </div>
@@ -29,26 +29,82 @@
                             </div>
                         </div>
                         <div class="row">
-                            {% for moment in moments %}
-                            <div class="col s6 m4">
-                                <div class="card z-depth-0">
-                                    <div class="card-image">
-                                        <a href="{% url 'city_detail' moment.city %}">
-                                            <img src="{{moment.city.img.url}}">
-                                            <span class="card-title" style="color:black;">{{ moment.city }}</span>
-                                        </a>
+                            <div class="swiper">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    {% for moment in moments %}
+                                    <div class="swiper-slide">
+                                        <div class="card ">
+                                            <div class="card-image">
+                                                <a href="{% url 'city_detail' moment.city %}">
+                                                    <img src="{{moment.city.img.url}}" style="object-fit: cover; height: 200px">
+                                                    <span class="card-title" style="color:black;">{{ moment.city }}</span>
+                                                </a>
+                                            </div>
+                                            <div class="card-content">
+                                                <p>{{actu}}</p>
+                                                <h6>{{moment.temperature}}°C</h6>
+                                                <p>{{moment.cloud_description}}</p>
+                                            </div>
+                                            <div class="card-action">
+                                                <a class="btn transparent green-text" href="{% url 'city_detail' moment.city %}">Voir</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-content">
-                                        <p>{{actu}}</p>
-                                        <h6>{{moment.temperature}}°C</h6>
-                                        <p>{{moment.cloud_description}}</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <a class="btn transparent green-text" href="{% url 'city_detail' moment.city %}">Voir</a>
-                                    </div>
+                                    {% endfor %}
                                 </div>
+                                <!-- If we need pagination -->
+                                <div class="swiper-pagination"></div>
+
+                                <!-- If we need navigation buttons -->
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+
+                                <!-- If we need scrollbar -->
+                                <!-- 
+                                <div class="swiper-scrollbar"></div> -->
                             </div>
-                            {% endfor %}
+                            <script>
+                                const swiper = new Swiper('.swiper', {
+                                    // Optional parameters
+                                    direction: 'horizontal',
+                                    loop: true,
+                                    // Responsive breakpoints
+                                    breakpoints: {
+                                        // when window width is >= 320px
+                                        320: {
+                                            slidesPerView: 1,
+                                            spaceBetween: 10
+                                        },
+                                        // when window width is >= 480px
+                                        480: {
+                                            slidesPerView: 2,
+                                            spaceBetween: 14
+                                        },
+                                        // when window width is >= 640px
+                                        640: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 16
+                                        }
+                                    },
+                                    // If we need pagination
+                                    pagination: {
+                                        el: '.swiper-pagination',
+                                    },
+
+                                    // Navigation arrows
+                                    navigation: {
+                                        nextEl: '.swiper-button-next',
+                                        prevEl: '.swiper-button-prev',
+                                    },
+
+                                    // And if we need scrollbar
+                                    scrollbar: {
+                                        el: '.swiper-scrollbar',
+                                    },
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -61,9 +117,11 @@
             <div class="pd20">
                 <h2 class="m0 font24">Annonces</h2>
                 {% for annonce in annonces %}
-                    <h3>{{annonce.title}}</h3>
-                    <img src="{{annonce.img.url}}">
-                    <p>{{annonce.description}}</p>
+                <div>
+                    <h5>{{annonce.title}}</h5>
+                    <img src="{{annonce.img.url}}" style="width: 100%;">
+                    <p>{{annonce.description | truncatechars:50 }}</p>
+                </div>
                 {% endfor %}
             </div>
         </div>

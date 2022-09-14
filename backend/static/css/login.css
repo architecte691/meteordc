@@ -1,0 +1,11 @@
+.main-container {
+    background-image: url(/static/images/adam-bouse-qfi4bEHYhOA-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.card {
+    width: 100%;
+    max-width: 500px;
+}
